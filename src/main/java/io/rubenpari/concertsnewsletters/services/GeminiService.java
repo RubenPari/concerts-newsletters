@@ -20,7 +20,7 @@ public class GeminiService implements IGeminiService {
     private String BASE_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
     public GeminiService() {
-        this.BASE_URL = this.BASE_URL + "?key=" + System.getProperty("GEMINI_API_KEY");
+        this.BASE_URL = this.BASE_URL + "?key=" + System.getenv("GEMINI_API_KEY");
     }
 
     @Override

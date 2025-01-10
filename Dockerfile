@@ -2,8 +2,9 @@ FROM openjdk:23
 
 WORKDIR /app
 
-COPY pom.xml .
-COPY src ./src
+COPY . .
+
+RUN chmod +x ./mvnw
 
 RUN ./mvnw clean package -DskipTests
 

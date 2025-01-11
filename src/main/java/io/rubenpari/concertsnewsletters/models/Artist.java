@@ -18,6 +18,9 @@ public class Artist {
     @NotBlank
     private String genre;
 
+    @NotBlank
+    private String imageUrl;
+
     protected Artist() {
     }
 

@@ -2,14 +2,18 @@ package io.rubenpari.concertsnewsletters.services;
 
 import io.rubenpari.concertsnewsletters.models.Artist;
 
-public interface IArtistService {
-    Artist findById(Integer id);
+import java.util.Map;
 
-    Artist findByName(String name);
+public interface IArtistService {
+    Artist getById(Integer id);
+
+    Artist getByName(String name);
+
+    Iterable<Artist> getAll();
 
     String save(Artist artist);
 
-    void deleteById(Integer id);
+    String updatePartial(String id, Map<String, Object> updates);
 
-    Iterable<Artist> getAll();
+    void deleteById(Integer id);
 }

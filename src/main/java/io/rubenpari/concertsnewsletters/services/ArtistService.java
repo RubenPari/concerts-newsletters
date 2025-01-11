@@ -61,6 +61,8 @@ public class ArtistService implements IArtistService {
             }
         });
 
+        artistRepositories.save(existingArtist);
+
         return "Artist updated";
     }
 

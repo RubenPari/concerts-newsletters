@@ -45,6 +45,11 @@ public class ArtistController {
         return artistService.save(artist);
     }
 
+    @PatchMapping("/{id}")
+    public String updatePartial(@PathVariable String id, @RequestBody Map<String, Object> updates) {
+        return artistService.updatePartial(id, updates);
+    }
+
     @DeleteMapping("/{id}")
     public String deleteById(@PathVariable String id) {
         if (id == null || !id.matches("\\d+")) {

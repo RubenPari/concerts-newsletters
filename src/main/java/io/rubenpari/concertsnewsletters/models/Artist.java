@@ -33,11 +33,15 @@ public class Artist {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public void setName(String value) {
+        name = value;
     }
 
-    public String getGenre() {
-        return genre;
+    public void setGenre(String value) {
+        genre = value;
+    }
+
+    public void setImageUrl(String value) {
+        imageUrl = value;
     }
 }

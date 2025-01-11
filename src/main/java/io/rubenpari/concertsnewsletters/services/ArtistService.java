@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import io.rubenpari.concertsnewsletters.models.Artist;
 import io.rubenpari.concertsnewsletters.repositories.IArtistRepositories;
 
+import java.util.Map;
+
 @Service
 public class ArtistService implements IArtistService {
 
@@ -35,6 +37,31 @@ public class ArtistService implements IArtistService {
         artistRepositories.save(artist);
 
         return "Artist saved";
+    }
+
+    @Override
+    public String updatePartial(String id, Map<String, Object> updates) {
+        Artist existingArtist = artistRepositories.findById(Integer.valueOf(id)).orElse(null);
+
+        if (existingArtist == null) {
+            throw new DataIntegrityViolationException("Artist with ID " + id + " does not exist");
+        }
+
+        updates.forEach((key, value) -> {
+            switch (key) {
+                case "name":
+                    existingArtist.setName((String) value);
+                    break;
+                case "genre":
+                    existingArtist.setGenre((String) value);
+                    break;
+                case "imageUrl":
+                    existingArtist.setImageUrl((String) value);
+                    break;
+            }
+        });
+
+        return "Artist updated";
     }
 
     @Override

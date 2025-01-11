@@ -5,7 +5,7 @@ import io.rubenpari.concertsnewsletters.models.Artist;
 import java.util.Map;
 
 public interface IArtistService {
-    Artist findById(Integer id);
+    Artist getById(Integer id);
 
     Artist getByName(String name);
 
@@ -16,6 +16,4 @@ public interface IArtistService {
     String updatePartial(String id, Map<String, Object> updates);
 
     void deleteById(Integer id);
-
-    Iterable<Artist> getAll();
 }

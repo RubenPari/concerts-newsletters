@@ -7,6 +7,8 @@ import io.rubenpari.concertsnewsletters.services.ArtistService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/artist")
 public class ArtistController {
@@ -28,7 +30,7 @@ public class ArtistController {
             throw new InvalidIdPathException("Invalid ID: " + id);
         }
 
-        return artistService.findById(Integer.valueOf(id));
+        return artistService.getById(Integer.valueOf(id));
     }
 
     @GetMapping("/name/{name}")
@@ -37,7 +39,7 @@ public class ArtistController {
             throw new InvalidNamePathException("Invalid name: " + name);
         }
 
-        return artistService.findByName(name);
+        return artistService.getByName(name);
     }
 
     @PostMapping("/new")

@@ -17,12 +17,12 @@ public class ArtistService implements IArtistService {
     }
 
     @Override
-    public Artist findById(Integer id) {
+    public Artist getById(Integer id) {
         return artistRepositories.findById(id).orElse(null);
     }
 
     @Override
-    public Artist findByName(String name) {
+    public Artist getByName(String name) {
         return artistRepositories.findByName(name).orElse(null);
     }
 

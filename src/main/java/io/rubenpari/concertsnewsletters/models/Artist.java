@@ -1,9 +1,13 @@
 package io.rubenpari.concertsnewsletters.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+
+import java.util.List;
 
 @Entity
 public class Artist {
@@ -20,6 +24,9 @@ public class Artist {
 
     @NotBlank
     private String imageUrl;
+
+    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Concert> concerts;
 
     protected Artist() {
     }
@@ -59,5 +66,13 @@ public class Artist {
 
     public void setImageUrl(String value) {
         imageUrl = value;
+    }
+
+    public List<Concert> getConcerts() {
+        return concerts;
+    }
+
+    public void setConcerts(List<Concert> concerts) {
+        this.concerts = concerts;
     }
 }

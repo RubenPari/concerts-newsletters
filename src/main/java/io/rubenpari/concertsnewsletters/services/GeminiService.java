@@ -57,7 +57,7 @@ public class GeminiService implements IGeminiService {
 
             String stringResponse = response.body().string();
             ResponseGeminiPayload objectResponse = objectMapper.readValue(stringResponse, ResponseGeminiPayload.class);
-            String Concerts = objectResponse.getCandidates().getFirst().getContent().getParts().getFirst().getText();
+            String Concerts = objectResponse.getCandidates().get(0).getContent().getParts().get(0).getText();
 
             return List.of(Concerts.split(","));
         } catch (IOException e) {
